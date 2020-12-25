@@ -9,6 +9,33 @@ Validation is done by [revalidator].
 
 Built for Remark 12, won't work with Remark 13. Requires [remark-frontmatter].
 
+## Example
+
+`example.js`:
+
+```js
+const processor = remark()
+  .use(require("remark-frontmatter"))
+  .use(require("remark-parse-frontmatter"))
+  .freeze();
+
+const file = processor.processSync(`
+---
+title: Hello, World!
+---
+`);
+
+console.log(file.data.frontmatter);
+```
+
+Output:
+
+```
+{
+  title: "Hello, World!"
+}
+```
+
 ## Usage
 
 ### Install
