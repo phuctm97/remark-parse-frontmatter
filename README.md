@@ -5,7 +5,9 @@
 
 Parses and validates Markdown frontmatter (YAML) to `file.data.frontmatter`.
 
-Built for Remark 12, won't work with Remark 13. Requires `remark-frontmatter`.
+Validation is done by [revalidator].
+
+Built for Remark 12, won't work with Remark 13. Requires [remark-frontmatter].
 
 ## Usage
 
@@ -20,26 +22,67 @@ yarn add remark-parse-frontmatter
 Unified / Remark:
 
 ```js
+// Without validation
 unified()
   .use(require("remark-parse"))
   .use(require("remark-frontmatter"))
   .use(require("remark-parse-frontmatter"))
   .use(require("remark-stringify"));
+
+// With validation
+unified()
+  .use(require("remark-parse"))
+  .use(require("remark-frontmatter"))
+  .use(require("remark-parse-frontmatter"), {
+    properties: {
+      title: { type: "string", required: true },
+      tags: { type: "array", maxItems: 4 },
+    },
+  })
+  .use(require("remark-stringify"));
 ```
 
 ```js
+// Without validation.
 remark()
   .use(require("remark-frontmatter"))
   .use(require("remark-parse-frontmatter"));
+
+// With validation.
+remark()
+  .use(require("remark-frontmatter"))
+  .use(require("remark-parse-frontmatter"), {
+    properties: {
+      title: { type: "string", required: true },
+      tags: { type: "array", maxItems: 4 },
+    },
+  });
 ```
 
 MDX:
 
 ```js
+// Without validation.
 mdx(mdxText, {
   remarkPlugins: [
     require("remark-unwrap-texts"),
     require("remark-parse-frontmatter"),
+  ],
+});
+
+// With validation.
+mdx(mdxText, {
+  remarkPlugins: [
+    require("remark-unwrap-texts"),
+    [
+      require("remark-parse-frontmatter"),
+      {
+        properties: {
+          title: { type: "string", required: true },
+          tags: { type: "array", maxItems: 4 },
+        },
+      },
+    ],
   ],
 });
 ```
@@ -49,3 +92,8 @@ mdx(mdxText, {
 <sub>
 Built with 💙 by <a href="https://twitter.com/phuctm97">@phuctm97</a>
 </sub>
+
+<!-- Links -->
+
+[remark-frontmatter]: https://github.com/remarkjs/remark-frontmatter
+[revalidator]: https://github.com/flatiron/revalidator
