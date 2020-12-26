@@ -1,6 +1,6 @@
 {
   "name": "remark-parse-frontmatter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "🎓 Parses and validates Markdown frontmatter (YAML) to data object.",
   "keywords": [
     "markdown",
