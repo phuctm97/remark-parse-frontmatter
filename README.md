@@ -116,11 +116,10 @@ mdx(mdxText, {
 
 ---
 
-<sub>
-Built with 💙 by <a href="https://twitter.com/phuctm97">@phuctm97</a>
-</sub>
+Made by [@phuctm97].
 
 <!-- Links -->
 
+[@phuctm97]: https://twitter.com/phuctm97
 [remark-frontmatter]: https://github.com/remarkjs/remark-frontmatter
 [revalidator]: https://github.com/flatiron/revalidator
