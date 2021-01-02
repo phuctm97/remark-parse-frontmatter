@@ -1,5 +1,6 @@
 # 🎓 remark-parse-frontmatter
 
+[![Github checks][checks badge]][checks url]
 [![npm version][npm badge]][npm url]
 [![Code style][code style badge]][code style url]
 [![GitHub license][license badge]][license url]
@@ -121,11 +122,15 @@ Made by [@phuctm97].
 
 <!-- Badges -->
 
-[npm badge]: https://img.shields.io/npm/v/remark-parse-frontmatter
+[checks badge]:
+  https://img.shields.io/github/checks-status/phuctm97/remark-parse-frontmatter/master?logo=Github
+[npm badge]: https://img.shields.io/npm/v/remark-parse-frontmatter?logo=npm
 [code style badge]:
   https://img.shields.io/badge/code%20style-prettier-F7B93E?logo=Prettier
 [license badge]:
   https://img.shields.io/github/license/phuctm97/remark-parse-frontmatter
+[checks url]:
+  https://github.com/phuctm97/remark-parse-frontmatter/actions?query=workflow%3APR+branch%3Amaster
 [npm url]: https://www.npmjs.com/package/remark-parse-frontmatter
 [code style url]: /.prettierrc.json
 [license url]: /LICENSE
