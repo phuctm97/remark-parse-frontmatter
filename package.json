@@ -34,6 +34,9 @@
     "style:check": "prettier --check .",
     "style:format": "prettier --write ."
   },
+  "engines": {
+    "node": "12.x"
+  },
   "dependencies": {
     "revalidator": "^0.3.1",
     "unist-util-find": "^1.0.2",
