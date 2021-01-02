@@ -1,7 +1,8 @@
 # 🎓 remark-parse-frontmatter
 
-![npm version](https://img.shields.io/npm/v/remark-parse-frontmatter)
-![GitHub license](https://img.shields.io/github/license/phuctm97/remark-parse-frontmatter)
+[![npm version][npm badge]][npm url]
+[![Code style][code style badge]][code style url]
+[![GitHub license][license badge]][license url]
 
 Parses and validates Markdown frontmatter (YAML) to `file.data.frontmatter`.
 
@@ -117,6 +118,17 @@ mdx(mdxText, {
 ---
 
 Made by [@phuctm97].
+
+<!-- Badges -->
+
+[npm badge]: https://img.shields.io/npm/v/remark-parse-frontmatter
+[code style badge]:
+  https://img.shields.io/badge/code%20style-prettier-F7B93E?logo=Prettier
+[license badge]:
+  https://img.shields.io/github/license/phuctm97/remark-parse-frontmatter
+[npm url]: https://www.npmjs.com/package/remark-parse-frontmatter
+[code style url]: /.prettierrc.json
+[license url]: /LICENSE
 
 <!-- Links -->
 
