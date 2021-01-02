@@ -1,7 +1,6 @@
-import { Parent, Literal } from "unist";
-import { VFile } from "vfile";
-import { parse } from "yaml";
+import { Plugin } from "unified";
 import find from "unist-util-find";
+import { parse } from "yaml";
 import revalidator from "revalidator";
 
 /**
@@ -11,27 +10,29 @@ import revalidator from "revalidator";
  *
  * Built for Remark 12, won't work with Remark 13. Requires `remark-frontmatter`.
  */
-const plugin = <T>(schema?: Revalidator.JSONSchema<T>) => (
-  tree: Parent,
-  file: VFile
+const plugin: Plugin<[Revalidator.JSONSchema<any>?]> = (schema) => (
+  tree,
+  file
 ) => {
-  const yamlNode: Literal = find(tree, { type: "yaml" });
-  if (!yamlNode) file.fail("No yaml node.");
-  if (typeof yamlNode.value !== "string")
-    file.fail("Invalid yaml node.", yamlNode);
+  const node = find(tree, { type: "yaml" });
+  if (!node) {
+    file.message("No yaml node.");
+    return;
+  }
+  if (typeof node.value !== "string") file.fail("Invalid yaml node.", node);
 
   let frontmatter;
   try {
-    frontmatter = parse(yamlNode.value);
+    frontmatter = parse(node.value);
   } catch (err) {
-    file.fail(err, yamlNode);
+    file.fail(err, node);
   }
 
   if (schema) {
     const result = revalidator.validate(frontmatter, schema);
     if (!result.valid) {
       const errs = JSON.stringify(result.errors, null, 2);
-      file.fail(`Invalid frontmatter: ${errs}.`, yamlNode);
+      file.fail(`Invalid frontmatter: ${errs}.`, node);
     }
   }
 
