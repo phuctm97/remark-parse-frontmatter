@@ -47,6 +47,6 @@
     "@types/revalidator": "^0.3.7",
     "prettier": "^2.2.1",
     "typescript": "^4.1.3",
-    "unified": "^9.2.0"
+    "unified": "^10.1.0"
   }
 }
